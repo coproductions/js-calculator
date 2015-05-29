@@ -71,6 +71,8 @@ var calculatorModule = function(){
 
 var myCalculator =  calculatorModule();
 
+var hello;
+
 
 
 

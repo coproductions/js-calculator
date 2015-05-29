@@ -8,45 +8,39 @@
 var calculatorModule = function(){
   var memory = 0;
   var total = 0;
-  var ifNumber = function(n){
-    if(typeof n === 'number'){
-      return n;
+
+  var _validate = function(method){
+    return function(arg){
+      if(typeof arg === 'number'){
+        return method(arg);
       }
       else return 'please enter a number';
+    };
+  };
+  function _add(number){
+    total += number;
+  }
+  function _subtract(number){
+    total -= number;
+  }
+  function _multiply(number){
+    total *= number;
+  }
+  function _divide(number){
+    total /= number;
+  }
+  function _load(number){
+    total = number;
+    return number;
   }
 
+
   var calculator = {
-    add: function(number){
-      if(typeof number === 'number'){
-        total += number;
-      }
-      else return 'please enter a number';
-    },
-    subtract: function(number){
-      if(typeof number === 'number'){
-        total -= number;
-      }
-      else return 'please enter a number';
-    },
-    multiply: function(number){
-      if(typeof number === 'number'){
-        total *= number;
-      }
-      else return 'please enter a number';
-    },
-    divide: function(number){
-      if(typeof number === 'number'){
-        total /= number;
-      }
-      else return 'please enter a number';
-    },
-    load: function(number){
-      if(typeof number === 'number'){
-      total = number;
-      return number;
-      }
-      else return 'please enter a number';
-    },
+    add: _validate(_add),
+    subtract: _validate(_subtract),
+    multiply: _validate(_multiply),
+    divide: _validate(_divide),
+    load: _validate(_load),
     getTotal: function(){
       return total;
     },
@@ -65,7 +59,7 @@ var calculatorModule = function(){
     saveMemory: function(){
       memory = total;
     }
-  };
+  }
   return calculator;
 };
 

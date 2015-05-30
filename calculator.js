@@ -35,7 +35,7 @@ var calculatorModule = (function(){
   }
 
 
-  var calculator = {
+  var _calculator = {
     add: _validate(_add),
     subtract: _validate(_subtract),
     multiply: _validate(_multiply),
@@ -60,7 +60,7 @@ var calculatorModule = (function(){
       memory = total;
     }
   }
-  return calculator;
+  return _calculator;
 })();
 
 var o1 = document.getElementById("operator1");
@@ -97,6 +97,10 @@ document.getElementById("calculate").addEventListener('click',function(){
     break;
 };
   var result = calculate(Number(o1.value),Number(o2.value),method2);
+  if(result===69){
+    alert('are you over 18?')
+  }
+  else result = result;
   document.getElementById("result").innerHTML = result;
   console.log('ienien')
 });

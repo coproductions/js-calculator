@@ -7,8 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div id="container">
-
+    <div id="container" >
+      <div>
+        <input style="width:100px;height:30px;border:1px solid blue;" type="number" id="operator1" >operator 1
+      </div>
+      <select id='operation'>
+        <option value='add'>+</option>
+        <option value='subtract'>-</option>
+        <option value="multiply">*</option>
+        <option value="divide">/</option>
+      </select>
+      <div >
+        <input style="width:100px;height:30px;border:1px solid blue;" type="number" id='operator2'>
+        operator 2
+      </div>
+      <button id="calculate">calculate</button>
+      <div id='result'>result</div>
     </div>
     <script src="/calculator.js" type="text/javascript"></script>
   </body>

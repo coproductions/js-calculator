@@ -5,7 +5,7 @@
  * @variable PRIVATE { Number } `total`
  * @return {object} `calculator` object that can be used
  */
-var calculatorModule = function(){
+var calculatorModule = (function(){
   var memory = 0;
   var total = 0;
 
@@ -61,32 +61,45 @@ var calculatorModule = function(){
     }
   }
   return calculator;
+})();
+
+var o1 = document.getElementById("operator1");
+
+var o2 = document.getElementById("operator2");
+
+var calculate = function(a,b,method3){
+  calculatorModule.load(a);
+  method3(b);
+  //return calculatorModule.getTotal;
+  return calculatorModule.getTotal();
+}
+var method2;
+console.log(document.getElementById('operation').value);
+
+//var operator =
+
+
+// document.getElementById("calculate").onClick = function(){
+//   var result = calculate(o1.value,o2.value,method);
+//   document.getElementById("result").innerHTML = result;
+//   console.log('ienien')
+// };
+
+document.getElementById("calculate").addEventListener('click',function(){
+  switch(document.getElementById('operation').value){
+  case 'add': method2 = calculatorModule.add;
+    break;
+  case 'subtract': method2 = calculatorModule.subtract;
+    break;
+  case 'multiply': method2 = calculatorModule.multiply;
+    break;
+  case 'divide' : method2 = calculatorModule.divide;
+    break;
 };
-
-var myCalculator =  calculatorModule();
-
-var hello;
-
-
+  var result = calculate(Number(o1.value),Number(o2.value),method2);
+  document.getElementById("result").innerHTML = result;
+  console.log('ienien')
+});
 
 
-
-  /**
-   * Return the value stored at `memory`
-   * @return { Number }
-   */
-
-
-  /**
-   * Stores the value of `total` to `memory`
-   */
-
-
-  /**
-   * Clear the value stored at `memory`
-   */
-
-  /**
-   * Validation
-   */
 
